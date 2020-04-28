@@ -41,7 +41,10 @@
                     <span>案列2_2) 2拆边/26节点</span>
                   </a>
                   <a href="#case_3_1" class="list-group-item" onclick="renderDemo3()">
-                    <span>案列3) 3拆边/51节点</span>
+                    <span>案列3_1) 3拆边/51节点</span>
+                  </a>
+                  <a href="#case_4_1" class="list-group-item" onclick="renderDemo4_1()">
+                    <span>案列4_1) 3拆边/51节点</span>
                   </a>
                   <!-- <a href="#" class="list-group-item" onclick="renderDemo100()">
                     <span>案列4-复杂数据</span>
@@ -166,6 +169,23 @@
     </script>
 
     <script>
+      const renderDemo4_1 = () =>
+        $.ajax({
+          url: "./case/4.1in_out.txt",
+          success: (data) =>
+            render(
+              data,
+              `
+       <h6>案列4.1</h6>
+       1. 数据每行为一条数据。<br>
+       2. 数据每行格式 "start,end,edge", 其中line: 0/不可拆分边, 00/可拆分,但没拆分，1/可拆分边<br>
+       3. 输入数据为line值全部为0，输出更改需要拆边的line:1
+     `
+            ),
+        });
+    </script>
+
+    <script>
       function renderDemoCustom() {
         return render(
           ``,
@@ -180,7 +200,7 @@
     </script>
 
     <script>
-      if (location.hash) {
+      if (location.hash && $(`a[href='${location.hash}']`).length > 0) {
         $(`a[href='${location.hash}']`).click();
       } else {
         $(".dropdown-menu a:eq(0)").click();

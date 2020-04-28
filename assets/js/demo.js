@@ -30,7 +30,7 @@ function render(datasourceStr, descripe, mode) {
         const node = { label: start, id: start };
         data.nodes.push(node);
         if (node.id == "Start") {
-          node.linkPoints = { left: false };
+          node.linkPoints = { left: false, right: true, fill: "#fff" };
         }
       }
       if (!keeps[record.end]) {
@@ -39,7 +39,7 @@ function render(datasourceStr, descripe, mode) {
         const node = { label: end, id: end };
         data.nodes.push(node);
         if (node.id == "End") {
-          node.linkPoints = { right: false };
+          node.linkPoints = { left: true, right: false, fill: "#fff" };
         }
       }
 
@@ -109,10 +109,10 @@ function render(datasourceStr, descripe, mode) {
         bottom: false,
         left: true,
         // circle的大小
-        size: 3,
-        lineWidth: 1,
+        // size: 3,
+        // lineWidth: 1,
         fill: "#fff",
-        stroke: "#28a745",
+        // stroke: "#28a745",
       },
     },
     defaultEdge: {
@@ -128,8 +128,8 @@ function render(datasourceStr, descripe, mode) {
   });
 
   if (data.nodes.length == 0) {
-    data.nodes.push({ label: "Start", id: "Start", linkPoints: { left: false } });
-    data.nodes.push({ label: "End", id: "End", linkPoints: { right: false } });
+    data.nodes.push({ label: "Start", id: "Start", linkPoints: { left: false, right: true, fill: "#fff" } });
+    data.nodes.push({ label: "End", id: "End", linkPoints: { right: false, left: true, fill: "#fff" } });
     data.edges.push({ source: "Start", target: "End" });
   }
   graph.data(data);
