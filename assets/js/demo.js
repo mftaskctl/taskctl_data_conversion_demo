@@ -27,16 +27,24 @@ function render(datasourceStr, descripe, mode) {
       if (!keeps[record.start]) {
         keeps[record.start] = true;
         var start = record.start + "";
-        data.nodes.push({ label: start, id: start });
+        const node = { label: start, id: start };
+        data.nodes.push(node);
+        if (node.id == "Start") {
+          node.linkPoints = { left: false };
+        }
       }
       if (!keeps[record.end]) {
         keeps[record.end] = true;
         var end = record.end + "";
-        data.nodes.push({ label: end, id: end });
+        const node = { label: end, id: end };
+        data.nodes.push(node);
+        if (node.id == "End") {
+          node.linkPoints = { right: false };
+        }
       }
 
-      let color = record.line === "1" ? "#f00" : "#fff";
-      if (record.line == "00") color = "orange";
+      let color = record.line === "1" ? "#dc3545" : "#fff";
+      if (record.line == "00") color = "#ffc107";
 
       data.edges.push({
         source: record.start + "",
@@ -47,6 +55,7 @@ function render(datasourceStr, descripe, mode) {
     },
     { nodes: [], edges: [] }
   );
+
   const container = document.getElementById("container");
   container.innerHTML = `<div id="tip" class="tip">${descripe}</div>`;
   const width = container.clientWidth;
@@ -81,11 +90,12 @@ function render(datasourceStr, descripe, mode) {
       //   lineWidth: 1,
       // },
       type: "rect",
-      size: [50, 30],
+      size: [60, 36],
       style: {
-        fill: "#9EC9FF",
-        stroke: "#5B8FF9",
+        fill: "#28a745",
+        stroke: "#28a745",
         lineWidth: 1,
+        radius: 2,
       },
       labelCfg: {
         style: {
@@ -102,7 +112,7 @@ function render(datasourceStr, descripe, mode) {
         size: 3,
         lineWidth: 1,
         fill: "#fff",
-        stroke: "#5B8FF9",
+        stroke: "#28a745",
       },
     },
     defaultEdge: {
@@ -116,6 +126,12 @@ function render(datasourceStr, descripe, mode) {
     },
     maxZoom: 1,
   });
+
+  if (data.nodes.length == 0) {
+    data.nodes.push({ label: "Start", id: "Start", linkPoints: { left: false } });
+    data.nodes.push({ label: "End", id: "End", linkPoints: { right: false } });
+    data.edges.push({ source: "Start", target: "End" });
+  }
   graph.data(data);
   graph.render();
   window.graph = graph;
