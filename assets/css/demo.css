@@ -1,0 +1,78 @@
+html,
+body {
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.layout {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 20px;
+}
+.layout-left {
+  padding-right: 20px;
+  overflow: auto;
+}
+.layout-right {
+  border-left: 1px solid #fff;
+}
+
+.tool {
+  height: 60px;
+  width: 100%;
+}
+
+.tool > .btn-group,
+.tool .dropdown-menu {
+  width: 100%;
+}
+textarea {
+  padding: 20px 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  height: calc(100% - 60px);
+  color: #fff;
+  margin: 0;
+  font-size: 18px;
+  font-family: 微软雅黑;
+  letter-spacing: 2px;
+}
+
+.fixed1 {
+  position: absolute;
+  top: 20px;
+  bottom: 0;
+  z-index: 99;
+}
+
+#ex1Slider .slider-selection {
+  background: #bababa;
+}
+
+.g6-minimap {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.tip {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 25px;
+  margin-bottom: 20px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 8;
+}
+
+button {
+  outline: none !important;
+}
+
+canvas {
+  position: relative;
+  z-index: 9;
+}
