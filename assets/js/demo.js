@@ -35,10 +35,13 @@ function render(datasourceStr, descripe, mode) {
         data.nodes.push({ label: end, id: end });
       }
 
+      let color = record.line === "1" ? "#f00" : "#fff";
+      if (record.line == "00") color = "orange";
+
       data.edges.push({
         source: record.start + "",
         target: record.end + "",
-        color: record.line === "1" ? "#f00" : "#fff",
+        color: color,
       });
       return data;
     },
@@ -144,12 +147,11 @@ function render(datasourceStr, descripe, mode) {
  * @param {number / number[]} endOrEnds  结束节点
  */
 function generate(startOrStarts, endOrEnds) {
-  const starts =
-    startOrStarts instanceof Array ? startOrStarts : [startOrStarts];
+  const starts = startOrStarts instanceof Array ? startOrStarts : [startOrStarts];
   if (arguments.length == 1) {
     var array = [];
     starts.reduce(function (start, end) {
-      array.push({ start: start, end: end });
+      array.push(`${start},${end},0`);
       return end;
     });
     return array;
@@ -158,13 +160,12 @@ function generate(startOrStarts, endOrEnds) {
   const ends = endOrEnds instanceof Array ? endOrEnds : [endOrEnds];
   return starts.reduce(function (array, start) {
     return ends.reduce(function (array, end) {
-      array.push({ start: start, end: end });
+      array.push(`${start},${end},0`);
       return array;
     }, array);
   }, []);
 }
 
 $(".dropdown-menu a").click(function () {
-  console.log($(this).text());
   $("#dpbtn").text($(this).text());
 });
