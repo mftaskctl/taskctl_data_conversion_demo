@@ -1,123 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TASKCtl Data Conversion Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href="./favicon.ico" rel="shortcut icon" />
-    <link href="./favicon.ico" rel="bookmark" />
-    <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
-    <!-- <link rel="stylesheet" href="assets/bootstrap/bootstrap-slider.min.css" /> -->
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TASKCtl Data Conversion Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <body>
-    <div class="container-fluid">
-      <div class="fixed1"></div>
-      <div class="row layout">
-        <div id="container" class="col-9 layout-left"></div>
-        <div class="col-3 layout-right">
-          <div class="btn-group btn-group-justified tool" role="group" aria-label="...">
-            <!-- Single button -->
-            <div class="btn-group">
-              <button id="dpbtn" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">请选择案列 <span class="caret"></span></button>
-              <div class="dropdown-menu">
-                <div class="button">
-                  <a href="#case_1_1" class="list-group-item" onclick="renderDemoByCase('1.1')">
-                    <span>案列1_1) - 1拆边/4节点</span>
-                  </a>
-                  <a href="#case_1_2" class="list-group-item" onclick="renderDemoByCase('1.2')">
-                    <span>案列1_2) 1拆边/5节点</span>
-                  </a>
-                  <a href="#case_1_3" class="list-group-item" onclick="renderDemoByCase('1.3')">
-                    <span>案列1_3) 1拆边/8节点</span>
-                  </a>
-                  <a href="#case_2_1" class="list-group-item" onclick="renderDemoByCase('2.1')">
-                    <span>案列2_1) 2拆边/13节点</span>
-                  </a>
-                  <a href="#case_2_2" class="list-group-item" onclick="renderDemoByCase('2.2')">
-                    <span>案列2_2) 2拆边/26节点</span>
-                  </a>
-                  <a href="#case_3_1" class="list-group-item" onclick="renderDemoByCase('3.1')">
-                    <span>案列3_1) 3拆边/51节点</span>
-                  </a>
-                  <a href="#case_4_1" class="list-group-item" onclick="renderDemoByCase('4.1')">
-                    <span>案列4_1) 并联多个始节点</span>
-                  </a>
-                  <a href="#case_5_1" class="list-group-item" onclick="renderDemoByCase('5.1')">
-                    <span>案列5_1) 并联不同尾节点</span>
-                  </a>
-                  <!-- <a href="#" class="list-group-item" onclick="renderDemo100()">
+  <link href="./favicon.ico" rel="shortcut icon" />
+  <link href="./favicon.ico" rel="bookmark" />
+  <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+  <!-- <link rel="stylesheet" href="assets/bootstrap/bootstrap-slider.min.css" /> -->
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="fixed1"></div>
+    <div class="row layout">
+      <div id="container" class="col-9 layout-left"></div>
+      <div class="col-3 layout-right">
+        <div class="btn-group btn-group-justified tool" role="group" aria-label="...">
+          <!-- Single button -->
+          <div class="btn-group">
+            <button id="dpbtn" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">请选择案列 <span class="caret"></span></button>
+            <div class="dropdown-menu">
+              <div class="button">
+                <a href="#case_1_1" class="list-group-item" onclick="renderDemoByCase('1.1')">
+                  <span>案列1_1) - 1拆边/4节点</span>
+                </a>
+                <a href="#case_1_2" class="list-group-item" onclick="renderDemoByCase('1.2')">
+                  <span>案列1_2) 1拆边/5节点</span>
+                </a>
+                <a href="#case_1_3" class="list-group-item" onclick="renderDemoByCase('1.3')">
+                  <span>案列1_3) 1拆边/8节点</span>
+                </a>
+                <a href="#case_2_1" class="list-group-item" onclick="renderDemoByCase('2.1')">
+                  <span>案列2_1) 2拆边/13节点</span>
+                </a>
+                <a href="#case_2_2" class="list-group-item" onclick="renderDemoByCase('2.2')">
+                  <span>案列2_2) 2拆边/26节点</span>
+                </a>
+                <a href="#case_3_1" class="list-group-item" onclick="renderDemoByCase('3.1')">
+                  <span>案列3_1) 3拆边/51节点</span>
+                </a>
+                <a href="#case_4_1" class="list-group-item" onclick="renderDemoByCase('4.1')">
+                  <span>案列4_1) 并联多个始节点</span>
+                </a>
+                <a href="#case_5_1" class="list-group-item" onclick="renderDemoByCase('5.1')">
+                  <span>案列5_1) 并联不同尾节点</span>
+                </a>
+                <a href="#case_5_2" class="list-group-item" onclick="renderDemoByCase('5.2')">
+                  <span>案列5_2) 并联案列</span>
+                </a>
+                <a href="#case_5_3" class="list-group-item" onclick="renderDemoByCase('5.3')">
+                  <span>案列5_3) 并联案列</span>
+                </a>
+                <!-- <a href="#" class="list-group-item" onclick="renderDemo100()">
                     <span>案列4-复杂数据</span>
                   </a> -->
-                  <a href="#" class="list-group-item" onclick="renderDemoCustom()">
-                    <span>请选择案列/输入数据</span>
-                  </a>
-                </div>
+                <a href="#" class="list-group-item" onclick="renderDemoCustom()">
+                  <span>请选择案列/输入数据</span>
+                </a>
               </div>
             </div>
-            <button type="button" class="btn btn-danger btn-md" style="min-width: 120px;" onclick="run('remove-edge')">
-              运行(拆边)
-            </button>
-            <button type="button" class="btn btn-success btn-md" style="min-width: 80px;" onclick="run()">
-              运行
-            </button>
           </div>
-          <div class="code-area">
-            <div class="code code-in"><textarea id="textarea"></textarea></div>
-            <div class="code code-out"></div>
-          </div>
+          <button type="button" class="btn btn-danger btn-md" style="min-width: 120px;" onclick="run('remove-edge')">
+            运行(拆边)
+          </button>
+          <button type="button" class="btn btn-success btn-md" style="min-width: 80px;" onclick="run()">
+            运行
+          </button>
+        </div>
+        <div class="code-area">
+          <div class="code code-in"><textarea id="textarea"></textarea></div>
+          <div class="code code-out"></div>
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="assets/g6/g6.min.js"></script>
-    <script src="assets/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/demo.js"></script>
-    <script src="assets/bootstrap/bootstrap.bundle.min.js"></script>
-    <!-- <script src="assets/bootstrap/bootstrap-slider.min.js"></script> -->
-    <!-- <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.0.0/styles/dark.min.css" rel="stylesheet" />
+  </div>
+  <script type="text/javascript" src="assets/g6/g6.min.js"></script>
+  <script src="assets/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/demo.js"></script>
+  <script src="assets/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- <script src="assets/bootstrap/bootstrap-slider.min.js"></script> -->
+  <!-- <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.0.0/styles/dark.min.css" rel="stylesheet" />
     <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.0.0/languages/xml.min.js"></script> -->
 
-    <script>
-      const renderDemoByCase = function (demoCase) {
-        $.ajax({
-          url: `./case/${demoCase}in_out.txt`,
-          success: (data) =>
-            render(
-              data,
-              `
+  <script>
+    const renderDemoByCase = function (demoCase) {
+      $.ajax({
+        url: `./case/${demoCase}in_out.txt`,
+        success: (data) =>
+          render(
+            data,
+            `
             <h6>案列 ${demoCase}<h6>
               1. 数据每行为一条数据。<br>
               2. 数据每行格式 "start,end,edge", 其中line: 0/不可拆分边(线条白色), 00/可拆分,但没拆分(线条黄色)，1/可拆分边(线条红色)。<br>
               3. <i>"输入数据"</i> 为line值全部为0，<i>"输出数据"</i> 更改需要拆边的line:1。<br>
               4. 减少边，让数据只能存在串联与并联关系中（除了开始/结束节点，其他节点如只有一条有效边，那么此节点的边也无效）。
           `
-            ),
-        });
-      };
-    </script>
+          ),
+      });
+    };
+  </script>
 
-    <script>
-      function renderDemoCustom() {
-        return render("");
-      }
-    </script>
+  <script>
+    function renderDemoCustom() {
+      return render("");
+    }
+  </script>
 
-    <script>
-      if (location.hash && $(`a[href='${location.hash}']`).length > 0) {
-        $(`a[href='${location.hash}']`).click();
-      } else {
-        $(".dropdown-menu a:eq(0)").click();
-      }
-    </script>
+  <script>
+    if (location.hash && $(`a[href='${location.hash}']`).length > 0) {
+      $(`a[href='${location.hash}']`).click();
+    } else {
+      $(".dropdown-menu a:eq(0)").click();
+    }
+  </script>
 
-    <script>
-      function run(mode) {
-        render(document.getElementById("textarea").value, document.getElementById("tip").innerHTML, mode);
-      }
-    </script>
-  </body>
+  <script>
+    function run(mode) {
+      render(document.getElementById("textarea").value, document.getElementById("tip").innerHTML, mode);
+    }
+  </script>
+</body>
+
 </html>
